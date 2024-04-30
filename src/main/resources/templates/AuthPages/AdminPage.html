@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="./StyleAdminPage.css" />
+    <link rel="stylesheet" th:href="@{/Css/AuthPageStyle/StyleAdminPage.css}" />
 </head>
 <body>
     <header class="header">
         <div class="container-header">
             <div class="logo">
-                <img src="../../images/warm-tavern-logo.svg" alt="warm tavern logo" 
+                <img th:src="@{/Imags/warm-tavern-logo.svg}" alt="warm tavern logo"
                 class="logo-img" width="94" height="94">
                 <div class="logo-text">Warm Tavern</div>
             </div>
@@ -44,7 +44,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar2.png}"
                                 alt="example" class="img-avatar">
                             </div>
                         </a>
@@ -52,17 +52,17 @@
                 </ul>
             </section>
             <section class="filter-panel">
-                <form action="/" class="filter-form">
+                <form method="post" th:object="${Book}" class="filter-form">
                     <h2 class="h2-filter-genre-section filter-section">
                         what genre is this book?
                     </h2>
-                    <div class="radio-filter-section">
-                        <input type="radio" name="genre" id="input-genre" class="input-genre-romantic input-radio" value="romantic">
-                        <label for="input-genre-romantic" class="label-genre-romantic label-filter">Romantic</label>
-                    </div>
-                    <div class="radio-filter-section">
-                        <input type="radio" name="genre" id="input-genre" class="input-genre-romantic input-radio" value="detectiv">
-                        <label for="input-genre-romantic" class="label-genre-romantic label-filter">detectiv</label>
+                    <div th:each="Genre : ${genres}" class="radio-filter-section">
+                        <input th:field="*{genres}"
+                               th:value="${Genre.getId()}"
+                               type="checkbox"
+                               id="input-genre"
+                               class="input-genre-romantic input-radio">
+                        <label for="input-genre-romantic" th:text="${Genre.getGenre_name()}" class="label-genre-romantic label-filter">Romantic</label>
                     </div>
                     <h2 class="h2-filter-genre-section filter-section">
                         Who is the author of this book?

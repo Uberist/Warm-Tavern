@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="./StyleMainPage.css" th:href="@{StyleMainPage.css}" />
+    <link rel="stylesheet" th:href="@{/Css/StyleMainPage.css}" />
 </head>
 <body>
     <header class="header">
         <div class="container-header">
             <div class="logo">
-                <img src="../images/warm-tavern-logo.svg" alt="warm tavern logo" 
+                <img th:src="@{/Imags/warm-tavern-logo.svg}" alt="warm tavern logo"
                 class="logo-img" width="94" height="94">
                 <div class="logo-text">Warm Tavern</div>
             </div>
@@ -51,7 +51,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info">
@@ -62,7 +62,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar2.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info">
@@ -73,7 +73,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info">
@@ -84,7 +84,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info">
@@ -95,7 +95,7 @@
                     <li class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info">
@@ -125,7 +125,7 @@
                     <div class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar card-book-comment">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info card-book-info-comment">
@@ -149,7 +149,7 @@
                     <div class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar card-book-comment">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info card-book-info-comment">
@@ -159,7 +159,7 @@
                     </div>
                     <div class="comment-body">
                         <div class="comment-info">
-                            <img src="../icons/user-avatar.png" 
+                            <img th:src="@{/Imags/exampleAvatar4.png}"
                             alt="user-avatar-comment" class="avatar-user">
                             <span class="name-user">Random chel</span>
                             <span class="date-comment">12.23.32 in 12:33</span>
@@ -173,7 +173,7 @@
                     <div class="card-book">
                         <a href="/" class="card-avatar-link">
                             <div class="card-book-avatar card-book-comment">
-                                <img src="../images/exampleAvatar2.png" 
+                                <img th:src="@{/Imags/exampleAvatar4.png}"
                                 alt="example" class="img-avatar">
                             </div>
                             <div class="card-book-info card-book-info-comment">
