@@ -57,7 +57,7 @@ public class AdminPageController {
         return "AuthPages/AdminPage";
     }
     @PostMapping
-    public String addBook(Book book){
+    public String addBook(@ModelAttribute Book book){
         String author_name = "";
         String voice_name = "";
         String genre_name = "";
