@@ -10,13 +10,26 @@ public class Book {
     private String book_caption;
     private String book_path;
     private String book_cover_path;
-    private List<Author> authors = new ArrayList<>();
-    private List<Genre> genres = new ArrayList<>();
-    private void addAuthor(Author author){
-        authors.add(author);
+    private List<Author> book_authors = new ArrayList<>();
+    private List<Genre> book_genres = new ArrayList<>();
+    private List<Voice> book_voices = new ArrayList<>();
+    public void addAuthor(Author author) {
+        book_authors.add(author);
     }
-    private void deleteAuthor(Author author){
-        authors.remove(author);
+    public void deleteAuthor(Author author) {
+        book_authors.remove(author);
+    }
+    public void addGenre(Genre genre) {
+        book_genres.add(genre);
+    }
+    public void deleteGenre(Genre genre) {
+        book_genres.remove(genre);
+    }
+    public void addVoice(Voice voice) {
+        book_voices.add(voice);
+    }
+    public void deleteVoice(Voice voice) {
+        book_voices.remove(voice);
     }
     public int getId() {
         return id;
@@ -58,29 +71,40 @@ public class Book {
         this.book_cover_path = book_cover_path;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public List<Author> getBook_authors() {
+        return book_authors;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setBook_authors(List<Author> book_authors) {
+        this.book_authors = book_authors;
     }
 
-    public List<Genre> getGenres() {
-        return genres;
+    public List<Genre> getBook_genres() {
+        return book_genres;
     }
 
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
+    public void setBook_genres(List<Genre> book_genres) {
+        this.book_genres = book_genres;
     }
 
-    public Book(int id, String book_name, String book_caption, String book_path, String book_cover_path, List<Author> authors, List<Genre> genres) {
+    public List<Voice> getBook_voices() {
+        return book_voices;
+    }
+
+    public void setBook_voices(List<Voice> book_voices) {
+        this.book_voices = book_voices;
+    }
+
+    public Book(int id, String book_name, String book_caption, String book_path, String book_cover_path, List<Author> book_authors, List<Genre> book_genres, List<Voice> book_voices) {
         this.id = id;
         this.book_name = book_name;
         this.book_caption = book_caption;
         this.book_path = book_path;
         this.book_cover_path = book_cover_path;
-        this.authors = authors;
-        this.genres = genres;
+        this.book_authors = book_authors;
+        this.book_genres = book_genres;
+        this.book_voices = book_voices;
+    }
+    public Book() {
     }
 }

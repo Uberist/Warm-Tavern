@@ -52,12 +52,12 @@
                 </ul>
             </section>
             <section class="filter-panel">
-                <form method="post" th:object="${Book}" class="filter-form">
+                <form method="post" th:object="${book}" class="filter-form">
                     <h2 class="h2-filter-genre-section filter-section">
                         what genre is this book?
                     </h2>
                     <div th:each="Genre : ${genres}" class="radio-filter-section">
-                        <input th:field="*{genres}"
+                        <input th:field="*{book_genres}"
                                th:value="${Genre.getId()}"
                                type="checkbox"
                                id="input-genre"
@@ -68,19 +68,36 @@
                         Who is the author of this book?
                     </h2>
                     <div class="input-filter-section">
-                        <input type="text" class="input-serach-book" name="input-author">
+                        <select class="input-serach-book"
+                                th:field="*{book_authors}">
+                            <option class="input-serach-book"
+                                    th:each="Author : ${authors}"
+                                    th:value="${Author.getId()}"
+                                    th:text="${Author.getAuthor_first_name() + ' ' + Author.getAuthor_last_name() + ' ' + Author.getAuthor_middle_name()}">                       Author.getAuthor_middle_name()}">
+                            </option>
+                        </select>
                     </div>
                     <h2 class="h2-filter-genre-section filter-section">
                         Who is reading this book?
                     </h2>
                     <div class="input-filter-section">
-                        <input type="text" class="input-serach-book" name="input-reader">
+                        <select th:field="*{book_voices}"
+                                class="input-serach-book">
+                            <option class="input-serach-book"
+                                    th:each="Voice : ${voices}"
+                                    th:value="${Voice.getId()}"
+                                    th:text="${Voice.getVoice_first_name()  + ' ' +  Voice.getVoice_last_name() + ' ' + Voice.getVoice_middle_name()}">
+                            </option>
+                        </select>
                     </div>
                     <h2 class="h2-filter-genre-section filter-section">
                         What is the title of your book?
                     </h2>
                     <div class="input-filter-section">
-                        <input type="text" class="input-serach-book" name="input-title">
+                        <input
+                                th:field="*{book_name}"
+                                type="text"
+                                class="input-serach-book">
                     </div>
                     <div class="btn-form">
                         <button class="btn-find-book btn">Add Book</button>
