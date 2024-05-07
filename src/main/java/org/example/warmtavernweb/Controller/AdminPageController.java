@@ -1,18 +1,18 @@
 package org.example.warmtavernweb.Controller;
 
+import org.example.warmtavernweb.Converters.ConvertBook;
 import org.example.warmtavernweb.Entity.Author;
 import org.example.warmtavernweb.Entity.Book;
 import org.example.warmtavernweb.Entity.Genre;
 import org.example.warmtavernweb.Entity.Voice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/AdminPage")
@@ -35,40 +35,43 @@ public class AdminPageController {
         return authors;
     }
     final List<Author> authors = Arrays.asList(
-            new Author(1, "Striven", "Kink", "hs"),
-            new Author(2, "Alecsandr" ,"Sergeevic", "Pushckin"),
-            new Author(3, "alecandr", "noname", "hs")
+            new Author(1, "Striven Kink hs"),
+            new Author(2, "Alecsandr Sergeevic Pushckin"),
+            new Author(3, "alecandr noname hs")
     );
     @ModelAttribute(name = "voices")
     public List<Voice> voices(){
         return voices;
     }
     final List<Voice> voices = Arrays.asList(
-        new Voice(1, "Igor", "Knizev", "hs"),
-        new Voice(2, "oleg", "bulgacov", "hs")
+        new Voice(1, "Igor Knizev hs"),
+        new Voice(2, "oleg bulgacov hs")
     );
     @ModelAttribute(name = "book")
-    final Book book(){
+    final Book book() {
         return new Book();
     }
     final List<Book> books = new ArrayList<>();
+    @ModelAttribute(name = "books")
+    public List<Book> books (){
+        return books;
+    }
     @GetMapping()
     public String adminPage(){
         return "AuthPages/AdminPage";
     }
     @PostMapping
-    public String addBook(@ModelAttribute Book book){
-        String author_name = "";
-        String voice_name = "";
-        String genre_name = "";
-        for (Author el : book.getBook_authors())
-            author_name = author_name + (el.getAuthor_first_name() + " " + el.getAuthor_last_name() + " " + el.getAuthor_middle_name() + ", ");
-        for (Voice el : book.getBook_voices())
-            voice_name = voice_name + (el.getVoice_first_name() + " " + el.getVoice_last_name() + " " + el.getVoice_middle_name() + ", ");
-        for (Genre el : book.getBook_genres())
-            genre_name = genre_name + el.getGenre_name() + ", ";
+    public String addBook(@RequestParam Map<String, String> params,
+                          @Autowired ConvertBook convertBook){
+        Book book = convertBook.convertFromMap(params);
         books.add(book);
-        log.info("book added: ", book.getBook_name(), author_name, voice_name, genre_name);
+        log.info(
+                                "book added:" + " " +
+                                "book name: " + book.getBook_name() + " " +
+                                "book caption: " + book.getBook_caption() + " " +
+                                "book author: " + book.getBook_authors().get(0).getAuthor_name() + " " +
+                                "book voice: " + book.getBook_voices().get(0).getVoice_name() + " " +
+                                "book genre: " + book.getBook_genres().get(0).getGenre_name() + book.getBook_genres().get(1).getGenre_name());
         return "AuthPages/AdminPage";
     }
 }
