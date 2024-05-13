@@ -1,6 +1,7 @@
 package org.example.warmtavernweb.Controller;
 
 import org.example.warmtavernweb.Converters.ConvertBook;
+import org.example.warmtavernweb.DAO.AdminDAO;
 import org.example.warmtavernweb.Entity.Author;
 import org.example.warmtavernweb.Entity.Book;
 import org.example.warmtavernweb.Entity.Genre;
@@ -17,6 +18,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/AdminPage")
 public class AdminPageController {
+    private AdminDAO adminDAO;
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AdminPageController.class);
     @ModelAttribute(name = "genres")
     public List<Genre> genre(){
@@ -34,11 +36,7 @@ public class AdminPageController {
     public List<Author> authors(){
         return authors;
     }
-    final List<Author> authors = Arrays.asList(
-            new Author(1, "Striven Kink hs"),
-            new Author(2, "Alecsandr Sergeevic Pushckin"),
-            new Author(3, "alecandr noname hs")
-    );
+    final List<Author> authors = adminDAO.getListAuthors();
     @ModelAttribute(name = "voices")
     public List<Voice> voices(){
         return voices;

@@ -1,5 +1,14 @@
 package org.example.warmtavernweb.Entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "authors")
 public class Author {
+    @Id
+
     private int id;
     private String author_name;
     public Author(int id, String author_name) {

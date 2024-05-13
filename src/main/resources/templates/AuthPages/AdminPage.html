@@ -68,15 +68,14 @@
                     <div th:each="Genre : ${genres}" class="radio-filter-section">
                         <input type="checkbox"
                                class="input-genre-romantic input-radio"
-                               th:value="${Genre.getId()}"
-                               name="input-genre"
+                               th:value="${Genre.getGenre_name}"
+                               th:name='${"input-genre-" + Genre.getId()}'
                                id="input-gener">
                         <label for="input-gener"
                                class="label-genre-romantic"
                                th:text="${Genre.getGenre_name()}"
                                 ></label>
                     </div>
-
                     <h2 class="h2-filter-genre-section filter-section">
                         Who is the author of this book?
                     </h2>

@@ -23,7 +23,7 @@ public class ConvertBook {
         List <Genre> genre_list = new ArrayList<>();
         int counter = 0;
         for(Map.Entry<String, String> entry : field.entrySet())
-            if(entry.getKey().equals("input-genre")){
+            if(entry.getKey().indexOf("input-genre") > -1){
                 genre_list.add(new Genre(0, entry.getValue()));
                 counter++;
                 log.info("covert book: " + counter);
