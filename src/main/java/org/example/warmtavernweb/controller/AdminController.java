@@ -1,7 +1,7 @@
-package org.example.warmtavernweb.Controller;
+package org.example.warmtavernweb.controller;
 
 import org.example.warmtavernweb.Converters.ConvertBook;
-import org.example.warmtavernweb.DAO.AdminDAO;
+import org.example.warmtavernweb.DAO.AuthorRepository;
 import org.example.warmtavernweb.Entity.Author;
 import org.example.warmtavernweb.Entity.Book;
 import org.example.warmtavernweb.Entity.Genre;
@@ -17,9 +17,10 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/AdminPage")
-public class AdminPageController {
-    private AdminDAO adminDAO;
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AdminPageController.class);
+public class AdminController {
+    @Autowired
+    private AuthorRepository authorRepository;
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AdminController.class);
     @ModelAttribute(name = "genres")
     public List<Genre> genre(){
         return genres;
@@ -34,9 +35,10 @@ public class AdminPageController {
     );
     @ModelAttribute(name = "authors")
     public List<Author> authors(){
+        List<Author> authors = authorRepository.findAll();
+        log.info("check repository" + authors.get(0));
         return authors;
     }
-    final List<Author> authors = adminDAO.getListAuthors();
     @ModelAttribute(name = "voices")
     public List<Voice> voices(){
         return voices;
@@ -67,7 +69,7 @@ public class AdminPageController {
                                 "book added:" + " " +
                                 "book name: " + book.getBook_name() + " " +
                                 "book caption: " + book.getBook_caption() + " " +
-                                "book author: " + book.getBook_authors().get(0).getAuthor_name() + " " +
+                                "book author: " + book.getBook_authors().get(0).getAuthor_first_name() + " " +
                                 "book voice: " + book.getBook_voices().get(0).getVoice_name() + " " +
                                 "book genre: " + book.getBook_genres().get(0).getGenre_name() + book.getBook_genres().get(1).getGenre_name());
         return "AuthPages/AdminPage";

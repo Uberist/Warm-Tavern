@@ -82,7 +82,7 @@
                     <div class="input-filter-section">
                         <input class="input-serach-book" name="input-author" list="list-authors">
                         <datalist id="list-authors">
-                            <option th:each="Author : ${authors}" th:value="${Author.getAuthor_name()}"></option>
+                            <option th:each="Author : ${authors}" th:value="${Author.getAuthor_first_name()}"></option>
                         </datalist>
                     </div>
 

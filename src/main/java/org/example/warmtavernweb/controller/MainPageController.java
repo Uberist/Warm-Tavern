@@ -1,4 +1,4 @@
-package org.example.warmtavernweb.Controller;
+package org.example.warmtavernweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

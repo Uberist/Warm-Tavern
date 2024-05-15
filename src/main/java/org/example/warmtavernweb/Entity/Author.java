@@ -1,19 +1,26 @@
 package org.example.warmtavernweb.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "authors")
 public class Author {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String author_name;
-    public Author(int id, String author_name) {
+    private String author_first_name;
+    private String author_last_name;
+    private String author_middle_name;
+
+    public Author(int id, String author_first_name, String author_last_name, String author_middle_name) {
         this.id = id;
-        this.author_name = author_name;
+        this.author_first_name = author_first_name;
+        this.author_last_name = author_last_name;
+        this.author_middle_name = author_middle_name;
+    }
+
+    public Author() {
+
     }
 
     public int getId() {
@@ -24,11 +31,27 @@ public class Author {
         this.id = id;
     }
 
-    public String getAuthor_name() {
-        return author_name;
+    public String getAuthor_first_name() {
+        return author_first_name;
     }
 
-    public void setAuthor_name(String author_name) {
-        this.author_name = author_name;
+    public void setAuthor_first_name(String author_first_name) {
+        this.author_first_name = author_first_name;
+    }
+
+    public String getAuthor_last_name() {
+        return author_last_name;
+    }
+
+    public void setAuthor_last_name(String author_last_name) {
+        this.author_last_name = author_last_name;
+    }
+
+    public String getAuthor_middle_name() {
+        return author_middle_name;
+    }
+
+    public void setAuthor_middle_name(String author_middle_name) {
+        this.author_middle_name = author_middle_name;
     }
 }
