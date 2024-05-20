@@ -1,8 +1,18 @@
 package org.example.warmtavernweb.Entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "genre")
 public class Genre {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String genre_name;
+
+    public Genre() {
+
+    }
 
     public int getId() {
         return id;

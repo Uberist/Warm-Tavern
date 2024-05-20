@@ -92,7 +92,7 @@
                     <div class="input-filter-section">
                         <input class="input-serach-book" name="input-reader" list="list-voices">
                         <datalist id="list-voices">
-                            <option th:each="Voice : ${voices}" th:value="${Voice.getVoice_name()}"></option>
+                            <option th:each="Voice : ${voices}" th:value="${Voice.getVoice_first_name()}"></option>
                         </datalist>
                     </div>
 
